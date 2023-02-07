@@ -1,0 +1,35 @@
+{% extends 'flatpages/default.html' %}
+
+{% load myFilters %}
+
+{% block myTitle %}
+  НОВОСТИ
+{% endblock myTitle %}
+
+{% block myContent %}
+
+<h1>Поиск по новостям</h1>  
+<form method="GET">
+  {{ filter.form }}
+  <input type="submit" value="Найти">
+</form>
+
+  {% if filter.qs %}
+    {% for post in filter.qs %}
+      <hr>
+      <h3>{{ post.title|Censor:'Вонючка' }}</h3>
+      <p>{{ post.dateCreation|date:'d.m.Y' }}</p>
+      <hr>
+      <p>{{post.text|truncatechars:50|Censor:'Вонючка'}}</p>
+    {% endfor %}
+    
+    <button> 
+      <a class="btn" href="/news/">
+        Вернуться на главную
+      </a>
+    </button>
+
+  {% else %}
+    <h2>Новостей нет :(</h2>
+  {% endif %}
+{% endblock myContent %}

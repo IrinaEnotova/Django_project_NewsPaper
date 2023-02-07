@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+{% load myFilters %}
+
+{% block myTitle %}
+{{ post.title }}
+{% endblock myTitle %}
+
+{% block myContent %}
+<!-- <h1>{{ post }}</h1> -->
+  <br>
+  <h3>{{ post.title|Censor:'Вонючка' }}</h3>
+  <p>{{ post.dateCreation|date:'d-m-Y H:i' }}</p>
+  <hr>
+  <p>{{ post.text|Censor:'Вонючка' }}</p>
+{% endblock myContent %}
