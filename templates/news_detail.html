@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% load myFilters %}
+
+{% block myTitle %}
+{{ post.title }}
+{% endblock myTitle %}
+
+{% block myContent %}
+  <br>
+  <h3>{{ post.title|Censor:'Вонючка' }}</h3>
+  <a href="{% url 'news_edit' post.id %}">
+    <u>Редактировать</u>
+  </a>
+  <a href="{% url 'news_delete' post.id %}">
+    <u>Удалить</u>
+  </a>
+  <p>{{ post.dateCreation|date:'d-m-Y H:i' }}</p>
+  <hr>
+  <p>{{ post.text|Censor:'Вонючка' }}</p>
+  <br>
+  <button> 
+    <a class="btn" href="/news/">
+      Вернуться на главную
+    </a>
+  </button>
+{% endblock myContent %}

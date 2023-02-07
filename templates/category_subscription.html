@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+{% block myTitle %}
+    Subscription
+{% endblock myTitle %}
+
+{% block myContent %}
+    <h1>Здравствуйте {{ request.user.username }}!</h1>
+    <h2>Вы выбрали категорию "{{ category.name }}" </h2>
+    <hr>
+    {% if is_not_subscribe %}
+    <h4> Если вы хотите получать сообщения и всегда быть в курсе появления новых публикаций в данной категории, нажмите кнопку "Подписаться" </h4>
+    <button><a href="add_subscribe/?pk={{ category.id }}">Подписаться</a></button>
+    {% else %}
+    <h4>Вы уже подписаны на эту категорию.</h4>
+    <h4>Если больше не хотите получать уведомление о новых публикациях, нажмите на кнопку "Отписаться".</h4>
+    <button><a href="del_subscribe/?pk={{ category.id }}">Отписаться</a></button>
+    {% endif %}
+{% endblock myContent %}

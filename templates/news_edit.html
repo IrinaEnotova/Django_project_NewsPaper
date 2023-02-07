@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+{% load myFilters %}
+
+{% block myTitle %}
+{{ post.title }}
+{% endblock myTitle %}
+
+{% block myContent %}
+  <h2>Редактировать новость</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Редактировать">
+  </form>
+{% endblock myContent %}

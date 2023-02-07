@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Недельная рассылка новостей по любимой категории </title>
+</head>
+<body>
+    <h1> Здравствуйте, {{ user }}, новые статьи из любимой категории за прошлую неделю ({{ week_number_last }}) в вашем разделе! </h1>
+<hr>
+{% for post in text %}
+{{ post }}
+{% endfor%}
+<br>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'flatpages/default.html' %}
+
+{% load myFilters %}
+
+{% block myTitle %}
+  Удаление страницы
+{% endblock myTitle %}
+
+{% block myContent %}
+<h2>Вы действительно хотите удалить данную новость?</h2>
+  <br>
+  <h3>{{ post.title|Censor:'Вонючка' }}</h3>
+  <p>{{ post.dateCreation|date:'d-m-Y H:i' }}</p>
+  <hr>
+  <p>{{ post.text|Censor:'Вонючка' }}</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Подтвердить удаление">
+  </form>
+{% endblock myContent %}
